@@ -6,7 +6,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import UnitsToAmount from './UnitsToAmount';
-import { colors } from './colors';
+import { colors } from './commonStyles';
 
 const styles = StyleSheet.create({
   container: {

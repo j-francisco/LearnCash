@@ -11,10 +11,10 @@ type Props = {
 // These styles match the Icon from react-native-elements
 const styles = StyleSheet.create({
   container: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     margin: 7,
-    borderRadius: 20,
+    borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -1,7 +1,8 @@
 /* @flow */
 import React from 'react';
 import { Text } from 'react-native';
-import { colors } from './colors';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { colors } from './commonStyles';
 
 type UnitCounts = {
   pennies: number,
@@ -57,7 +58,9 @@ type Props = {
 function CurrentValue(props: Props) {
   const value = getValueFromUnitCounts(props.unitCounts);
   return (
-    <Text style={{ textAlign: 'center', fontSize: 22, color: colors.themeColor2 }}>{value}</Text>
+    <Text style={{ textAlign: 'center', fontSize: wp('5%'), color: colors.themeColor2 }}>
+      {value}
+    </Text>
   );
 }
 

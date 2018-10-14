@@ -1,69 +1,77 @@
 /* @flow */
 
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import * as React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import NumberInput from './NumberInput';
 import CircleButtonText from './CircleButtonText';
-import { colors } from './colors';
+import { colors } from './commonStyles';
 
 type P = {
   count: number,
   onChangeValue: (val: number) => void,
   label: string,
+  image: React.node,
+  width: number,
+  height: number,
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    padding: 5,
+    alignItems: 'center',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     borderBottomWidth: 1,
     borderBottomColor: colors.themeColor2,
   },
   labelContainer: {
-    width: 50,
-    justifyContent: 'center',
+    width: 75,
+    alignItems: 'center',
+    marginHorizontal: 10,
   },
   labelStyle: {
     textAlign: 'center',
-    fontSize: 18,
     color: colors.themeColor2,
   },
-  inputContainer: {
-    justifyContent: 'center',
+  rightSide: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
+  inputContainer: {},
   clearContainer: {
-    justifyContent: 'center',
-    marginLeft: 10,
+    flex: 1,
+    alignItems: 'flex-end',
   },
 });
 
 // TODO try using Context API and make this functional component
 
-class MoneyUnitInput extends Component<P> {
+class MoneyUnitInput extends React.Component<P> {
   onChangeValue = (val: number) => this.props.onChangeValue(val);
 
   add = (amountToAdd: number) => this.props.onChangeValue(this.props.count + amountToAdd);
 
   render() {
-    const { count, label } = this.props;
+    const { count, label, image, height, width } = this.props;
     const { container, labelContainer, inputContainer, labelStyle, clearContainer } = styles;
     return (
       <View style={container}>
         <View style={labelContainer}>
+          <Image style={{ width, height }} source={image} />
           <Text style={labelStyle}>{label}</Text>
         </View>
         <View style={inputContainer}>
           <NumberInput value={count} onChangeValue={this.onChangeValue} />
         </View>
-        <View style={{ marginLeft: 40 }}>
+        <View style={{ marginLeft: 5 }}>
           <CircleButtonText
             backgroundColor={colors.themeColor5}
             onPress={() => this.add(5)}
             text="+5"
           />
         </View>
-
         <View style={clearContainer}>
           <TouchableOpacity onPress={() => this.onChangeValue(0)}>
             <Text>Clear</Text>

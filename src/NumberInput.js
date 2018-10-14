@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import CircleButtonIcon from './CircleButtonIcon';
-import { colors } from './colors';
+import { colors } from './commonStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,9 +14,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   numberInput: {
-    fontSize: 18,
-    height: 30,
-    width: 50,
+    width: 30,
     textAlign: 'center',
     color: colors.themeColor2,
   },

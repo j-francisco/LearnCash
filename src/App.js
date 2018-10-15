@@ -1,22 +1,36 @@
-/**
- * @format
- * @flow
- */
-
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import UnitsToAmount from './UnitsToAmount';
+import { createBottomTabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Wallet from './Wallet';
+import Pay from './Pay';
 import { colors } from './commonStyles';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.themeColor4Light,
+export default createBottomTabNavigator(
+  {
+    Wallet,
+    Pay,
   },
-});
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: (iconOptions: { horizontal: boolean, tintColor: string }) => {
+        const { horizontal, tintColor } = iconOptions;
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Wallet') {
+          iconName = 'md-wallet';
+        } else if (routeName === 'Pay') {
+          iconName = 'md-cash';
+        }
 
-export default () => (
-  <View style={styles.container}>
-    <UnitsToAmount />
-  </View>
+        return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: colors.themeColor5,
+      inactiveTintColor: colors.themeColor2Light,
+      activeBackgroundColor: colors.mainBackground,
+      inactiveBackgroundColor: colors.mainBackground,
+      style: { borderTopColor: colors.themeColor5 },
+    },
+  }
 );

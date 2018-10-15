@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     paddingHorizontal: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.themeColor2,
+    borderBottomWidth: 0.5,
+    borderBottomColor: colors.themeColor2Lighter,
   },
   labelContainer: {
     width: moneyImageSizes.dollarWidth,

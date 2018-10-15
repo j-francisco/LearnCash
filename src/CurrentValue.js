@@ -48,7 +48,9 @@ function getValueFromUnitCounts(unitCounts: UnitCounts): string {
 
   const dollars = totalCents / 100;
 
-  return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  // Doesn't seem to work on older ios versions
+  // return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  return `$${dollars.toFixed(2)}`;
 }
 
 type Props = {

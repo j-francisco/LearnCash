@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import { widthPercentageToDP } from 'react-native-responsive-screen';
 import CircleButton from './CircleButton';
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
 const styles = StyleSheet.create({
   labelStyle: {
     color: 'white',
+    fontSize: widthPercentageToDP('3%'),
   },
 });
 

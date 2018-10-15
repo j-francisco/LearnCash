@@ -1,9 +1,10 @@
 /* @flow */
 import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP } from 'react-native-responsive-screen';
 import MoneyUnitInput from './MoneyUnitInput';
 import CurrentValue from './CurrentValue';
-import { colors } from './commonStyles';
+import { colors, fontSizes, moneyImageSizes } from './commonStyles';
 import * as moneyImages from './images/moneyImages';
 
 const pennyInches = 0.75;
@@ -11,10 +12,6 @@ const nickelInches = 0.835;
 const dimeInches = 0.705;
 const quarterInches = 0.955;
 const halfDollarInches = 1.205;
-
-const coinWidth = 30;
-const dollarWidth = 70;
-const dollarHeight = 30;
 
 type P = {};
 
@@ -49,12 +46,12 @@ const initialState = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10,
+    marginTop: heightPercentageToDP('4%'),
   },
   header: {
     borderBottomWidth: 2,
     borderBottomColor: colors.themeColor5,
-    paddingVertical: 10,
+    padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -83,15 +80,20 @@ class UnitsToAmount extends Component<P, S> {
 
     const { container, header } = styles;
 
+    const { coinWidth, dollarWidth, dollarHeight } = moneyImageSizes;
+
     return (
       <View style={container}>
         <View style={header}>
-          <Text style={{ width: 64 }} />
+          <Text style={{ width: wp('15%') }} />
           <View style={{ flex: 1 }}>
             <CurrentValue unitCounts={this.state} />
           </View>
-          <TouchableOpacity style={{ width: 64 }} onPress={() => this.setState(initialState)}>
-            <Text style={{ width: 64 }}>Clear All</Text>
+          <TouchableOpacity
+            style={{ width: wp('15%'), alignItems: 'flex-end' }}
+            onPress={() => this.setState(initialState)}
+          >
+            <Text style={{ fontSize: fontSizes.normalText }}>Clear All</Text>
           </TouchableOpacity>
         </View>
         <ScrollView>

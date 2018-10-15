@@ -4,8 +4,9 @@
 
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CircleButtonIcon from './CircleButtonIcon';
-import { colors } from './commonStyles';
+import { fontSizes, colors } from './commonStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +15,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   numberInput: {
-    width: 30,
+    fontSize: fontSizes.normalText,
+    width: wp('6%'),
     textAlign: 'center',
     color: colors.themeColor2,
   },

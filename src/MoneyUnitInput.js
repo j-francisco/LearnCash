@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import NumberInput from './NumberInput';
 import CircleButtonText from './CircleButtonText';
-import { colors } from './commonStyles';
+import { fontSizes, colors, moneyImageSizes } from './commonStyles';
 
 type P = {
   count: number,
@@ -20,18 +21,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 5,
+    paddingVertical: 10,
     paddingHorizontal: 10,
     borderBottomWidth: 1,
     borderBottomColor: colors.themeColor2,
   },
   labelContainer: {
-    width: 75,
+    width: moneyImageSizes.dollarWidth,
     alignItems: 'center',
     marginHorizontal: 10,
   },
   labelStyle: {
     textAlign: 'center',
+    fontSize: fontSizes.normalText,
     color: colors.themeColor2,
   },
   rightSide: {
@@ -65,7 +67,7 @@ class MoneyUnitInput extends React.Component<P> {
         <View style={inputContainer}>
           <NumberInput value={count} onChangeValue={this.onChangeValue} />
         </View>
-        <View style={{ marginLeft: 5 }}>
+        <View style={{ marginLeft: wp('3%') }}>
           <CircleButtonText
             backgroundColor={colors.themeColor5}
             onPress={() => this.add(5)}
@@ -74,7 +76,7 @@ class MoneyUnitInput extends React.Component<P> {
         </View>
         <View style={clearContainer}>
           <TouchableOpacity onPress={() => this.onChangeValue(0)}>
-            <Text>Clear</Text>
+            <Text style={{ fontSize: fontSizes.normalText }}>Clear</Text>
           </TouchableOpacity>
         </View>
       </View>

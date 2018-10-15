@@ -1,6 +1,7 @@
 /* @flow */
 import * as React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 type Props = {
   children: React.Node,
@@ -11,10 +12,10 @@ type Props = {
 // These styles match the Icon from react-native-elements
 const styles = StyleSheet.create({
   container: {
-    width: 30,
-    height: 30,
+    width: wp('7%'),
+    height: wp('7%'),
     margin: 7,
-    borderRadius: 15,
+    borderRadius: wp('3.5%'),
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -4,8 +4,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import NumberInput from './NumberInput';
-import CircleButtonText from './CircleButtonText';
-import { fontSizes, colors, moneyImageSizes } from './commonStyles';
+import { CircleButtonText, fontSizes, colors, moneyImageSizes } from '../common';
 
 type P = {
   count: number,

@@ -2,11 +2,25 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP } from 'react-native-responsive-screen';
-import MainContainer from './MainContainer';
+import MainContainer from '../MainContainer';
 import MoneyUnitInput from './MoneyUnitInput';
 import CurrentValue from './CurrentValue';
-import { colors, fontSizes, moneyImageSizes } from './commonStyles';
-import * as moneyImages from './images/moneyImages';
+import {
+  colors,
+  fontSizes,
+  moneyImageSizes,
+  pennyImg,
+  nickelImg,
+  dimeImg,
+  quarterImg,
+  halfdollarImg,
+  oneImg,
+  fiveImg,
+  tenImg,
+  twentyImg,
+  fiftyImg,
+  hundredImg,
+} from '../common';
 
 const pennyInches = 0.75;
 const nickelInches = 0.835;
@@ -47,7 +61,6 @@ const initialState = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: heightPercentageToDP('4%'),
   },
   header: {
     borderBottomWidth: 0.5,
@@ -104,7 +117,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={pennies}
               label="1¢"
-              image={moneyImages.penny}
+              image={pennyImg}
               height={coinWidth * pennyInches}
               width={coinWidth * pennyInches}
               onChangeValue={val => this.onChangeValue(val, 'pennies')}
@@ -112,7 +125,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={nickels}
               label="5¢"
-              image={moneyImages.nickel}
+              image={nickelImg}
               height={coinWidth * nickelInches}
               width={coinWidth * nickelInches}
               onChangeValue={val => this.onChangeValue(val, 'nickels')}
@@ -120,7 +133,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={dimes}
               label="10¢"
-              image={moneyImages.dime}
+              image={dimeImg}
               height={coinWidth * dimeInches}
               width={coinWidth * dimeInches}
               onChangeValue={val => this.onChangeValue(val, 'dimes')}
@@ -128,7 +141,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={quarters}
               label="25¢"
-              image={moneyImages.quarter}
+              image={quarterImg}
               height={coinWidth * quarterInches}
               width={coinWidth * quarterInches}
               onChangeValue={val => this.onChangeValue(val, 'quarters')}
@@ -136,7 +149,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={halves}
               label="50¢"
-              image={moneyImages.halfdollar}
+              image={halfdollarImg}
               height={coinWidth * halfDollarInches}
               width={coinWidth * halfDollarInches}
               onChangeValue={val => this.onChangeValue(val, 'halves')}
@@ -144,7 +157,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={ones}
               label="$1"
-              image={moneyImages.one}
+              image={oneImg}
               height={dollarHeight}
               width={dollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'ones')}
@@ -152,7 +165,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={fives}
               label="$5"
-              image={moneyImages.five}
+              image={fiveImg}
               height={dollarHeight}
               width={dollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'fives')}
@@ -160,7 +173,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={tens}
               label="$10"
-              image={moneyImages.ten}
+              image={tenImg}
               height={dollarHeight}
               width={dollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'tens')}
@@ -168,7 +181,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={twenties}
               label="$20"
-              image={moneyImages.twenty}
+              image={twentyImg}
               height={dollarHeight}
               width={dollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'twenties')}
@@ -176,7 +189,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={fifties}
               label="$50"
-              image={moneyImages.fifty}
+              image={fiftyImg}
               height={dollarHeight}
               width={dollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'fifties')}
@@ -184,7 +197,7 @@ class Wallet extends Component<P, S> {
             <MoneyUnitInput
               count={hundreds}
               label="$100"
-              image={moneyImages.hundred}
+              image={hundredImg}
               height={dollarHeight}
               width={dollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'hundreds')}

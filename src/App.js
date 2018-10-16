@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Wallet from './Wallet';
 import Pay from './Pay';
-import { colors } from './commonStyles';
+import { colors } from './common';
 
 export default createBottomTabNavigator(
   {

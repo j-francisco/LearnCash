@@ -2,7 +2,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { colors } from './commonStyles';
+import { colors, fontSizes } from '../common';
 
 type UnitCounts = {
   pennies: number,
@@ -50,6 +50,7 @@ function getValueFromUnitCounts(unitCounts: UnitCounts): string {
 
   // Doesn't seem to work on older ios versions
   // return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
   return `$${dollars.toFixed(2)}`;
 }
 
@@ -60,7 +61,7 @@ type Props = {
 function CurrentValue(props: Props) {
   const value = getValueFromUnitCounts(props.unitCounts);
   return (
-    <Text style={{ textAlign: 'center', fontSize: wp('5%'), color: colors.themeColor2 }}>
+    <Text style={{ textAlign: 'center', fontSize: fontSizes.largeText, color: colors.themeColor2 }}>
       {value}
     </Text>
   );

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { colors } from './commonStyles';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+import { colors } from './common';
 
 type Props = {
   children: React.node,
@@ -9,6 +10,7 @@ type Props = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: heightPercentageToDP('4%'),
     backgroundColor: colors.mainBackground,
   },
 });

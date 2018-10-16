@@ -2,6 +2,7 @@ import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export const fontSizes = {
   normalText: wp('3.5%'),
+  largeText: wp('5%'),
 };
 
 export const colors = {

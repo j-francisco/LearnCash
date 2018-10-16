@@ -5,8 +5,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import CircleButtonIcon from './CircleButtonIcon';
-import { fontSizes, colors } from './commonStyles';
+import { CircleButtonIcon, fontSizes, colors } from '../common';
 
 const styles = StyleSheet.create({
   container: {

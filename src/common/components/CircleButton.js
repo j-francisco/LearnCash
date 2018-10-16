@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CircleButton(props: Props) {
+export function CircleButton(props: Props) {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={[styles.container, { backgroundColor: props.backgroundColor }]}>
@@ -33,5 +33,3 @@ function CircleButton(props: Props) {
     </TouchableOpacity>
   );
 }
-
-export default CircleButton;

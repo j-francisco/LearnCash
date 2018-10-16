@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { widthPercentageToDP } from 'react-native-responsive-screen';
-import CircleButton from './CircleButton';
+import { CircleButton } from './CircleButton';
 
 type Props = {
   text: string,
@@ -16,12 +16,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function CircleButtonText(props: Props) {
+export function CircleButtonText(props: Props) {
   return (
     <CircleButton backgroundColor={props.backgroundColor} onPress={props.onPress}>
       <Text style={styles.labelStyle}>{props.text}</Text>
     </CircleButton>
   );
 }
-
-export default CircleButtonText;

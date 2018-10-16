@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import { widthPercentageToDP } from 'react-native-responsive-screen';
-import CircleButton from './CircleButton';
+import { CircleButton } from './CircleButton';
 
 type Props = {
   name: string,
@@ -10,7 +10,7 @@ type Props = {
   onPress: () => void,
 };
 
-function CircleButtonText(props: Props) {
+export function CircleButtonIcon(props: Props) {
   return (
     <CircleButton backgroundColor={props.backgroundColor} onPress={props.onPress}>
       <Icon
@@ -22,5 +22,3 @@ function CircleButtonText(props: Props) {
     </CircleButton>
   );
 }
-
-export default CircleButtonText;

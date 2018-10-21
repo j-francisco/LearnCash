@@ -1,7 +1,6 @@
 /* @flow */
 import React from 'react';
 import { Text } from 'react-native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { colors, fontSizes } from '../common';
 
 type UnitCounts = {

@@ -3,13 +3,15 @@
   "extends": [
     "airbnb",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:jest/recommended"
   ],
   "plugins": [
     "react",
     "flowtype",
     "jsx-a11y",
-    "prettier"
+    "prettier",
+    "jest"
   ],
   "rules": {
     "react/jsx-filename-extension": "off",

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { widthPercentageToDP } from 'react-native-responsive-screen';

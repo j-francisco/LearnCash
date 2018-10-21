@@ -1,19 +1,20 @@
 /* @flow */
 import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP } from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import MainContainer from '../MainContainer';
 import MoneyUnitInput from './MoneyUnitInput';
 import CurrentValue from './CurrentValue';
 import {
   colors,
+  MoneyUnitCounts,
   fontSizes,
   moneyImageSizes,
   pennyImg,
   nickelImg,
   dimeImg,
   quarterImg,
-  halfdollarImg,
+  halfDollarImg,
   oneImg,
   fiveImg,
   tenImg,
@@ -22,27 +23,9 @@ import {
   hundredImg,
 } from '../common';
 
-const pennyInches = 0.75;
-const nickelInches = 0.835;
-const dimeInches = 0.705;
-const quarterInches = 0.955;
-const halfDollarInches = 1.205;
-
 type P = {};
 
-type S = {
-  pennies: number,
-  nickels: number,
-  dimes: number,
-  quarters: number,
-  halves: number,
-  ones: number,
-  fives: number,
-  tens: number,
-  twenties: number,
-  fifties: number,
-  hundreds: number,
-};
+type S = MoneyUnitCounts;
 
 const initialState = {
   pennies: 0,
@@ -94,7 +77,15 @@ class Wallet extends Component<P, S> {
 
     const { container, header } = styles;
 
-    const { coinWidth, dollarWidth, dollarHeight } = moneyImageSizes;
+    const {
+      pennyWidth,
+      nickelWidth,
+      dimeWidth,
+      quarterWidth,
+      halfDollarWidth,
+      dollarWidth,
+      dollarHeight,
+    } = moneyImageSizes;
 
     return (
       <MainContainer>
@@ -118,40 +109,40 @@ class Wallet extends Component<P, S> {
               count={pennies}
               label="1¢"
               image={pennyImg}
-              height={coinWidth * pennyInches}
-              width={coinWidth * pennyInches}
+              height={pennyWidth}
+              width={pennyWidth}
               onChangeValue={val => this.onChangeValue(val, 'pennies')}
             />
             <MoneyUnitInput
               count={nickels}
               label="5¢"
               image={nickelImg}
-              height={coinWidth * nickelInches}
-              width={coinWidth * nickelInches}
+              height={nickelWidth}
+              width={nickelWidth}
               onChangeValue={val => this.onChangeValue(val, 'nickels')}
             />
             <MoneyUnitInput
               count={dimes}
               label="10¢"
               image={dimeImg}
-              height={coinWidth * dimeInches}
-              width={coinWidth * dimeInches}
+              height={dimeWidth}
+              width={dimeWidth}
               onChangeValue={val => this.onChangeValue(val, 'dimes')}
             />
             <MoneyUnitInput
               count={quarters}
               label="25¢"
               image={quarterImg}
-              height={coinWidth * quarterInches}
-              width={coinWidth * quarterInches}
+              height={quarterWidth}
+              width={quarterWidth}
               onChangeValue={val => this.onChangeValue(val, 'quarters')}
             />
             <MoneyUnitInput
               count={halves}
               label="50¢"
-              image={halfdollarImg}
-              height={coinWidth * halfDollarInches}
-              width={coinWidth * halfDollarInches}
+              image={halfDollarImg}
+              height={halfDollarWidth}
+              width={halfDollarWidth}
               onChangeValue={val => this.onChangeValue(val, 'halves')}
             />
             <MoneyUnitInput

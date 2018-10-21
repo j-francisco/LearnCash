@@ -10,7 +10,7 @@ type P = {
   count: number,
   onChangeValue: (val: number) => void,
   label: string,
-  image: React.node,
+  image: React.Node,
   width: number,
   height: number,
 };

@@ -1,9 +1,12 @@
+// @flow
 import React from 'react';
+import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Wallet from './Wallet';
 import Pay from './Pay';
-import { colors } from './common';
+import { colors, fontSizes } from './common';
 
 export default createBottomTabNavigator(
   {
@@ -12,8 +15,8 @@ export default createBottomTabNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: (iconOptions: { horizontal: boolean, tintColor: string }) => {
-        const { horizontal, tintColor } = iconOptions;
+      tabBarIcon: (iconOptions: { tintColor: string }) => {
+        const { tintColor } = iconOptions;
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Wallet') {
@@ -22,7 +25,7 @@ export default createBottomTabNavigator(
           iconName = 'md-cash';
         }
 
-        return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+        return <Icon name={iconName} size={Platform.isPad ? 30 : 20} color={tintColor} />;
       },
     }),
     tabBarOptions: {
@@ -31,6 +34,7 @@ export default createBottomTabNavigator(
       activeBackgroundColor: colors.mainBackground,
       inactiveBackgroundColor: colors.mainBackground,
       style: { borderTopColor: colors.themeColor5 },
+      labelStyle: { fontSize: wp('3%') },
     },
   }
 );

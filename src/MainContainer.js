@@ -1,10 +1,11 @@
+// @flow
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import { colors } from './common';
 
 type Props = {
-  children: React.node,
+  children: React.Node,
 };
 
 const styles = StyleSheet.create({

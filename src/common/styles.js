@@ -1,3 +1,4 @@
+// @flow
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export const fontSizes = {
@@ -18,8 +19,22 @@ export const colors = {
   mainBackground: 'white',
 };
 
+const coinWidth = wp('8%');
+
+const coinSizeRatios = {
+  penny: 0.75,
+  nickel: 0.835,
+  dime: 0.705,
+  quarter: 0.955,
+  halfDollar: 1.205,
+};
+
 export const moneyImageSizes = {
-  coinWidth: wp('8%'),
+  pennyWidth: coinWidth * coinSizeRatios.penny,
+  nickelWidth: coinWidth * coinSizeRatios.nickel,
+  dimeWidth: coinWidth * coinSizeRatios.dime,
+  quarterWidth: coinWidth * coinSizeRatios.quarter,
+  halfDollarWidth: coinWidth * coinSizeRatios.halfDollar,
   dollarWidth: wp('18.67%'),
   dollarHeight: wp('8%'),
 };

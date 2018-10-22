@@ -1,12 +1,16 @@
 // @flow
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Wallet from './Wallet';
 import Pay from './Pay';
-import { colors, fontSizes } from './common';
+import { colors } from './common';
+
+const styles = StyleSheet.create({
+  iconStyle: Platform.isPad ? { marginTop: 3 } : {},
+});
 
 export default createBottomTabNavigator(
   {
@@ -25,7 +29,7 @@ export default createBottomTabNavigator(
           iconName = 'md-cash';
         }
 
-        return <Icon name={iconName} size={Platform.isPad ? 30 : 20} color={tintColor} />;
+        return <Icon name={iconName} size={25} color={tintColor} style={styles.iconStyle} />;
       },
     }),
     tabBarOptions: {

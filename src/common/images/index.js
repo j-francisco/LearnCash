@@ -9,6 +9,7 @@ import tenImg from './ten.jpg';
 import twentyImg from './twenty.jpg';
 import fiftyImg from './fifty.jpg';
 import hundredImg from './hundred.jpg';
+import logoImg from './logo.jpg';
 
 export {
   pennyImg,
@@ -22,4 +23,5 @@ export {
   twentyImg,
   fiftyImg,
   hundredImg,
+  logoImg,
 };

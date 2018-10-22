@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderBottomWidth: 0.5,
@@ -34,6 +33,8 @@ const styles = StyleSheet.create({
   },
   countTextStyle: {
     fontSize: fontSizes.largeText,
+    color: colors.themeColor1,
+    marginLeft: 50,
   },
 });
 

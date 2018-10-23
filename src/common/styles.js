@@ -16,6 +16,7 @@ export const colors = {
   themeColor4: 'rgb(229, 222, 165)',
   themeColor4Light: 'rgba(229, 222, 165, 0.50)',
   themeColor5: 'rgb(196, 78, 24)',
+  iconGreen: 'rgb(57, 112, 57)',
   mainBackground: 'white',
 };
 

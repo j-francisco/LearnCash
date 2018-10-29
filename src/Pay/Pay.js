@@ -17,7 +17,7 @@ import {
   CurrencyInput,
   colors,
   MoneyUnitCounts,
-  CalculateRequiredUnits,
+  calculateRequiredUnits,
   logoImg,
 } from '../common';
 
@@ -78,7 +78,7 @@ class Pay extends Component<P, S> {
     } = styles;
     const { enableHalfDollars } = this.props;
 
-    const unitCounts: MoneyUnitCounts = CalculateRequiredUnits(this.state.price, enableHalfDollars);
+    const unitCounts: MoneyUnitCounts = calculateRequiredUnits(this.state.price, enableHalfDollars);
 
     const header = (
       <View style={enterPriceContainerStyle}>

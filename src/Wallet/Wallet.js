@@ -21,24 +21,17 @@ import {
   twentyImg,
   fiftyImg,
   hundredImg,
+  storeWalletValue,
+  retrieveWalletValue,
+  ZeroValue,
+  Loading,
 } from '../common';
 
 type P = {};
 
-type S = MoneyUnitCounts;
-
-const initialState = {
-  pennies: 0,
-  nickels: 0,
-  dimes: 0,
-  quarters: 0,
-  halves: 0,
-  ones: 0,
-  fives: 0,
-  tens: 0,
-  twenties: 0,
-  fifties: 0,
-  hundreds: 0,
+type S = {
+  unitCounts: MoneyUnitCounts,
+  loading: boolean,
 };
 
 const styles = StyleSheet.create({
@@ -56,11 +49,39 @@ const styles = StyleSheet.create({
 });
 
 class Wallet extends Component<P, S> {
-  state = initialState;
+  state = {
+    unitCounts: ZeroValue,
+    loading: true,
+  };
 
-  onChangeValue = (val: number, key: string) => this.setState({ [key]: val });
+  componentWillMount() {
+    retrieveWalletValue().then(value => {
+      this.setState({
+        unitCounts: JSON.parse(value),
+        loading: false,
+      });
+    });
+  }
+
+  updateUnitCounts = (unitCounts: MoneyUnitCounts) => {
+    this.setState({ unitCounts }, () => storeWalletValue(unitCounts));
+  };
+
+  onChangeValue = (val: number, key: string) => {
+    const newUnitCounts = {
+      ...this.state.unitCounts,
+      [key]: val,
+    };
+    this.updateUnitCounts(newUnitCounts);
+  };
+
+  clearAll = () => {
+    this.updateUnitCounts(ZeroValue);
+  };
 
   render() {
+    const { unitCounts, loading } = this.state;
+
     const {
       pennies,
       nickels,
@@ -73,7 +94,7 @@ class Wallet extends Component<P, S> {
       twenties,
       fifties,
       hundreds,
-    } = this.state;
+    } = unitCounts;
 
     const { container, header } = styles;
 
@@ -87,17 +108,21 @@ class Wallet extends Component<P, S> {
       dollarHeight,
     } = moneyImageSizes;
 
+    if (loading) {
+      return <Loading />;
+    }
+
     return (
       <MainContainer>
         <View style={container}>
           <View style={header}>
             <Text style={{ width: wp('15%') }} />
             <View style={{ flex: 1 }}>
-              <CurrentValue unitCounts={this.state} />
+              <CurrentValue unitCounts={unitCounts} />
             </View>
             <TouchableOpacity
               style={{ width: wp('15%'), alignItems: 'flex-end' }}
-              onPress={() => this.setState(initialState)}
+              onPress={this.clearAll}
             >
               <Text style={{ fontSize: fontSizes.normalText, color: colors.themeColor2 }}>
                 Clear All

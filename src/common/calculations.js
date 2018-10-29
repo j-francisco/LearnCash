@@ -1,7 +1,21 @@
 // @flow
 import type { MoneyUnitCounts } from './types';
 
-export function ConvertPriceToCents(displayPrice: string): number {
+export const ZeroValue: MoneyUnitCounts = {
+  pennies: 0,
+  nickels: 0,
+  dimes: 0,
+  quarters: 0,
+  halves: 0,
+  ones: 0,
+  fives: 0,
+  tens: 0,
+  twenties: 0,
+  fifties: 0,
+  hundreds: 0,
+};
+
+export function convertPriceToCents(displayPrice: string): number {
   // displayPrice comes in like "$xx.xx"
   if (displayPrice.length === 0) {
     return 0;
@@ -21,11 +35,11 @@ export function ConvertPriceToCents(displayPrice: string): number {
   return price * 100;
 }
 
-export function CalculateRequiredUnits(
+export function calculateRequiredUnits(
   displayPrice: string,
   enableHalfDollar: boolean = false
 ): MoneyUnitCounts {
-  let remainingCents = ConvertPriceToCents(displayPrice);
+  let remainingCents = convertPriceToCents(displayPrice);
 
   let requiredUnits = {
     pennies: 0,
@@ -108,4 +122,45 @@ export function CalculateRequiredUnits(
   }
 
   return requiredUnits;
+}
+
+export function getCentsFromUnitCounts(unitCounts: MoneyUnitCounts): number {
+  const {
+    pennies,
+    nickels,
+    dimes,
+    quarters,
+    halves,
+    ones,
+    fives,
+    tens,
+    twenties,
+    fifties,
+    hundreds,
+  } = unitCounts;
+
+  const totalCents =
+    pennies +
+    nickels * 5 +
+    dimes * 10 +
+    quarters * 25 +
+    halves * 50 +
+    ones * 100 +
+    fives * 500 +
+    tens * 1000 +
+    twenties * 2000 +
+    fifties * 5000 +
+    hundreds * 10000;
+
+  return totalCents;
+}
+
+export function getValueFromUnitCounts(unitCounts: MoneyUnitCounts): string {
+  const totalCents = getCentsFromUnitCounts(unitCounts);
+  const dollars = totalCents / 100;
+
+  // Doesn't seem to work on older ios versions
+  // return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+  return `$${dollars.toFixed(2)}`;
 }

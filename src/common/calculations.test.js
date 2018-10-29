@@ -1,4 +1,4 @@
-import { CalculateRequiredUnits } from './calculations';
+import { calculateRequiredUnits } from './calculations';
 
 const initialUnits = {
   pennies: 0,
@@ -16,7 +16,7 @@ const initialUnits = {
 
 describe('calculateRequiredUnits returns', () => {
   const runTest = (input, expectedOutput, enableHalfDollars = false) => {
-    expect(CalculateRequiredUnits(input, enableHalfDollars)).toEqual(expectedOutput);
+    expect(calculateRequiredUnits(input, enableHalfDollars)).toEqual(expectedOutput);
   };
 
   test('all zeroes when value is ""', () => {

@@ -57,7 +57,7 @@ class Wallet extends Component<P, S> {
   componentWillMount() {
     retrieveWalletValue().then(value => {
       this.setState({
-        unitCounts: JSON.parse(value),
+        unitCounts: value ? JSON.parse(value) : ZeroValue,
         loading: false,
       });
     });

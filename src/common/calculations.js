@@ -26,6 +26,8 @@ export function convertPriceToCents(displayPrice: string): number {
     price = price.substring(1);
   }
 
+  // Parsing this way means we're always using whole numbers and
+  // don't have to deal with floating point problems.
   let dollars = 0;
   let cents = 0;
   if (price.includes('.')) {

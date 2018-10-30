@@ -209,9 +209,23 @@ describe('calculateRequiredUnits returns', () => {
     runTest('$40', result);
   });
 
-  test('1 fifty when value is $"50"', () => {
+  test('1 fifty when value is "$50"', () => {
     const result = { ...initialUnits, fifties: 1 };
     runTest('$50', result);
+  });
+
+  test('1 fifty, 1 ten, 1 five, 2 ones, 2 quarters, 2 dimes, 4 pennies when "$67.74"', () => {
+    const result = {
+      ...initialUnits,
+      fifties: 1,
+      tens: 1,
+      fives: 1,
+      ones: 2,
+      quarters: 2,
+      dimes: 2,
+      pennies: 4,
+    };
+    runTest('$67.74', result);
   });
 
   test('1 hundred when value is $"100"', () => {

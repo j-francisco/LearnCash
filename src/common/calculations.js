@@ -26,13 +26,25 @@ export function convertPriceToCents(displayPrice: string): number {
     price = price.substring(1);
   }
 
-  price = parseFloat(price);
-
-  if (Number.isNaN(price)) {
-    return 0;
+  let dollars = 0;
+  let cents = 0;
+  if (price.includes('.')) {
+    const split = price.split('.');
+    dollars = parseInt(split[0], 10);
+    cents = parseInt(split[1], 10);
+  } else {
+    dollars = parseInt(price, 10);
   }
 
-  return price * 100;
+  if (Number.isNaN(dollars)) {
+    dollars = 0;
+  }
+
+  if (Number.isNaN(cents)) {
+    cents = 0;
+  }
+
+  return dollars * 100 + cents;
 }
 
 export function calculateRequiredUnits(

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import MoneyUnit from './MoneyUnit';
@@ -33,6 +34,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: colors.themeColor1,
   },
+  clearButtonStyle: {
+    width: wp('15%'),
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  clearButtonLabelStyle: { fontSize: fontSizes.normalText, color: colors.themeColor2 },
 });
 
 type P = {
@@ -69,12 +77,23 @@ class Pay extends Component<P, S> {
     this.setState({ price });
   };
 
+  clearPrice = () => {
+    this.setState({ price: '' });
+    if (this.currencyInput) {
+      this.currencyInput.clearInput();
+    }
+  };
+
+  currencyInput: ?CurrencyInput;
+
   render() {
     const {
       enterPriceContainerStyle,
       headerText,
       currencyInputContainerStyle,
       currencyInputStyle,
+      clearButtonStyle,
+      clearButtonLabelStyle,
     } = styles;
     const { enableHalfDollars } = this.props;
 
@@ -88,8 +107,14 @@ class Pay extends Component<P, S> {
             style={currencyInputStyle}
             value={this.state.price}
             onChanged={this.onPriceChanged}
+            ref={component => {
+              this.currencyInput = component;
+            }}
           />
         </View>
+        <TouchableOpacity style={clearButtonStyle} onPress={this.clearPrice}>
+          <Text style={clearButtonLabelStyle}>Clear</Text>
+        </TouchableOpacity>
       </View>
     );
 
@@ -105,18 +130,18 @@ class Pay extends Component<P, S> {
             <ScrollView style={{ flex: 1 }}>
               {header}
               <View style={{ flex: 1 }}>
-                {unitCounts.pennies > 0 && <MoneyUnit.Penny count={unitCounts.pennies} />}
-                {unitCounts.nickels > 0 && <MoneyUnit.Nickel count={unitCounts.nickels} />}
-                {unitCounts.dimes > 0 && <MoneyUnit.Dime count={unitCounts.dimes} />}
-                {unitCounts.quarters > 0 && <MoneyUnit.Quarter count={unitCounts.quarters} />}
+                {unitCounts.hundreds > 0 && <MoneyUnit.HundredDollar count={unitCounts.hundreds} />}
+                {unitCounts.fifties > 0 && <MoneyUnit.FiftyDollar count={unitCounts.fifties} />}
+                {unitCounts.twenties > 0 && <MoneyUnit.TwentyDollar count={unitCounts.twenties} />}
+                {unitCounts.tens > 0 && <MoneyUnit.TenDollar count={unitCounts.tens} />}
+                {unitCounts.fives > 0 && <MoneyUnit.FiveDollar count={unitCounts.fives} />}
+                {unitCounts.ones > 0 && <MoneyUnit.OneDollar count={unitCounts.ones} />}
                 {unitCounts.halves > 0 &&
                   enableHalfDollars && <MoneyUnit.HalfDollar count={unitCounts.halves} />}
-                {unitCounts.ones > 0 && <MoneyUnit.OneDollar count={unitCounts.ones} />}
-                {unitCounts.fives > 0 && <MoneyUnit.FiveDollar count={unitCounts.fives} />}
-                {unitCounts.tens > 0 && <MoneyUnit.TenDollar count={unitCounts.tens} />}
-                {unitCounts.twenties > 0 && <MoneyUnit.TwentyDollar count={unitCounts.twenties} />}
-                {unitCounts.fifties > 0 && <MoneyUnit.FiftyDollar count={unitCounts.fifties} />}
-                {unitCounts.hundreds > 0 && <MoneyUnit.HundredDollar count={unitCounts.hundreds} />}
+                {unitCounts.quarters > 0 && <MoneyUnit.Quarter count={unitCounts.quarters} />}
+                {unitCounts.dimes > 0 && <MoneyUnit.Dime count={unitCounts.dimes} />}
+                {unitCounts.nickels > 0 && <MoneyUnit.Nickel count={unitCounts.nickels} />}
+                {unitCounts.pennies > 0 && <MoneyUnit.Penny count={unitCounts.pennies} />}
               </View>
             </ScrollView>
           )}

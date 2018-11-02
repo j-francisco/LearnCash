@@ -10,8 +10,17 @@ class CurrencyInput extends React.Component<P> {
     this.props.onChanged(formatted);
   };
 
+  clearInput = () => {
+    if (this.input) {
+      this.input.clear();
+    }
+  };
+
+  input: ?TextInputMask;
+
   render() {
     const { style, value } = this.props;
+
     return (
       <TextInputMask
         autoCorrect={false}
@@ -22,6 +31,9 @@ class CurrencyInput extends React.Component<P> {
         mask="$[999999999].[99]"
         placeholder="$0.00"
         value={value}
+        ref={component => {
+          this.input = component;
+        }}
       />
     );
   }

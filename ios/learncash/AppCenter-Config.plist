@@ -3,6 +3,6 @@
 <plist version="1.0">
   <dict>
     <key>AppSecret</key>
-    <string>d7eca31e-1128-46dc-bc41-75c2c0134c8c</string>
+    <string>APPCENTER_SECRET</string>
   </dict>
 </plist>
